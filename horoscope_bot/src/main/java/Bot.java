@@ -1,6 +1,8 @@
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendSticker;
 import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.util.Random;
@@ -31,6 +33,20 @@ public class Bot extends TelegramLongPollingBot {
             execute(sendMessage); //отправка сообщения
         } catch (TelegramApiException e){
             e.printStackTrace(); //если не отправлено, бот выдает ошибку
+        }
+    }
+
+    public void sendSti(Message message, String stickerId){
+        InputFile sticker = new InputFile();
+        sticker.setMedia(stickerId);
+        SendSticker sendSticker = new SendSticker();
+        sendSticker.setChatId(message.getChatId().toString());
+        sendSticker.setSticker(sticker);
+
+        try {
+            execute(sendSticker);
+        } catch (TelegramApiException e){
+            e.printStackTrace();
         }
     }
     public int[] get_zodiak_code(){
@@ -65,9 +81,11 @@ public class Bot extends TelegramLongPollingBot {
             System.out.println("Совместимость " + first + " и " + second);
             if (first.equals(second))
             {
+                sendSti(message, "CAACAgQAAxkBAAEI6MhkWTmv7_8k42nNSNnu-VIFu29lEAACPgwAAp3eWVBGHn6omULBrS8E");
                 sendMsg(message, "Вы лохи, не подходите друг друг");
             }
             else {
+                sendSti(message, "CAACAgQAAxkBAAEI6MhkWTmv7_8k42nNSNnu-VIFu29lEAACPgwAAp3eWVBGHn6omULBrS8E");
                 sendMsg(message, "Ваша совместимость:" + rnd.nextInt(-100, 100) + "%");
             }
         } catch(ArrayIndexOutOfBoundsException e) {
@@ -158,12 +176,15 @@ public class Bot extends TelegramLongPollingBot {
             if (zodiak_num>=0) {
                 FilePredict filePredict = new FilePredict(zodiak_num);
                 System.out.println(zodiak_num);
+                sendSti(message, "CAACAgQAAxkBAAEI6MhkWTmv7_8k42nNSNnu-VIFu29lEAACPgwAAp3eWVBGHn6omULBrS8E");
                 sendMsg(message, filePredict.getPredict());
             } else if (zodiak_num == -1) {
                 Rules rules = new Rules();
+                sendSti(message, "CAACAgIAAxkBAAEI6PlkWUtwqhGQu_3q5RynqbDMXoCP9AACYhUAAiK6eUnZlk2-IN3yIS8E");
                 sendMsg(message, rules.getRules());
             }
             else if (zodiak_num == -2){
+                sendSti(message, "CAACAgIAAxkBAAEI6PlkWUtwqhGQu_3q5RynqbDMXoCP9AACYhUAAiK6eUnZlk2-IN3yIS8E");
                 sendMsg(message, "Помутнение в астрале... Ты меня обманываешь, хотел написать что-то другое!!!");
                 System.out.println("Помутнение в астрале... Ты меня обманываешь, хотел написать что-то другое!!!");
             }
