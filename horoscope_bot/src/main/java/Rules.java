@@ -8,6 +8,31 @@ public class Rules {
     private String line;
     public String message;
 
+    public String chooseLng(){
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        try {
+            File file = new File("choose lng.txt");
+            file.createNewFile();
+            br = new BufferedReader( new FileReader("choose lng.txt", StandardCharsets.UTF_8));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+            message = sb.toString();
+            System.out.println(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return message;
+    }
     public String getRules(){
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder();

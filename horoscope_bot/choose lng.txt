@@ -1,0 +1,4 @@
+Перед початком повноцінно використання бота,
+будь ласка, оберіть свою мову.
+Before starting to fully use the bot,
+please select your language.

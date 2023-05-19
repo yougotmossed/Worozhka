@@ -1,0 +1,5 @@
+﻿1. In order to recognize your horoscope, write your zodiac sign in Ukrainian, English or Russian.
+For example: "Терези", "Cancer", "Стрелец". 
+2. To find out compatibility, write two zodiac signs or names separated by a comma (put a space after the comma, you are a literate person, after all).
+For example: "Іван, Маруся", "Libra, leo". 
+I wish you success in predicting))
